@@ -1,0 +1,26 @@
+noscript {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-top: 50%;
+}
+
+.centered {
+  text-align: center;
+}
+
+.page {
+  height: 100vh;
+  overflow: auto;
+}
+
+@media screen and (min-width: 900px) {
+  .width-container {
+      max-width: 800px;
+      margin: auto;
+  }
+}
