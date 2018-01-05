@@ -1,5 +1,7 @@
 import React from 'react'
 
+import StylePicker from '../_commons/StylePicker'
+
 import './style.css'
 
 export default function PageNotFound (props) {
@@ -12,6 +14,7 @@ export default function PageNotFound (props) {
       <main className='width-container'>
           Here is my social media website design
       </main>
+      <StylePicker />
     </div>
   )
 }
