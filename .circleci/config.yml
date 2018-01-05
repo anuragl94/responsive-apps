@@ -1,13 +1,25 @@
 version: 2
+
 jobs:
   build:
     docker:
-      - image: circleci/node:6.12-browsers
+      - image: zopnow/lamp-stack
     working_directory: /var/www/application
     steps:
+      - run:
+          name: Running selenium standalone
+          command: |
+            cd ~/selenium
+            wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
+            xvfb-run java -jar selenium-server-standalone-3.8.1.jar
+            sleep 5
+          background: true
+      - run: rm -rf /var/www/application
       - checkout
       - run: npm install
       - run: npm run build
+      - run: a2enmod headers
+      - run: service apache2 restart
       - restore_cache:
           keys:
             - composer-v1-{{ checksum "composer.json" }}
