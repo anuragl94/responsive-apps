@@ -31,15 +31,12 @@ jobs:
             - vendor
       - run: ./vendor/bin/codecept build
       - run: ./vendor/bin/codecept run
+      - deploy:
+          name: Deploy Application
+          command: |
+            if [ "${CIRCLE_BRANCH}" == “master” ]; then
+              firebase deploy
+            fi
       - run:
           name: End script
           command: echo Script completed
-      # - deploy:
-      #     name: Deploy Application
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" == “development” ]; then
-      #         aws deploy create-deployment --application-name platform-admin  --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name staging  --github-location repository=zopnow/platform-admin,commitId=${CIRCLE_SHA1} --region ap-south-1
-      #       fi
-      #       if [ "${CIRCLE_BRANCH}" == “master” ]; then
-      #         aws deploy create-deployment --application-name platform-admin  --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name production  --github-location repository=zopnow/platform-admin,commitId=${CIRCLE_SHA1} --region ap-south-1
-      #       fi
