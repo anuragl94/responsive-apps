@@ -8,6 +8,6 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://localhost:3001
+            url: http://localhost
             browser: chrome
         - \Helper\Acceptance
