@@ -1,0 +1,33 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6.12-browsers
+    working_directory: /var/www/application
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - restore_cache:
+          keys:
+            - composer-v1-{{ checksum "composer.json" }}
+            - composer-v1-
+      - run: composer install -n --prefer-dist
+      - save_cache:
+          key: composer-v1-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+      # - run: ./vendor/bin/codecept build
+      # - run: ./vendor/bin/codecept run
+      - run:
+          name: End script
+          command: echo Script completed
+      # - deploy:
+      #     name: Deploy Application
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" == “development” ]; then
+      #         aws deploy create-deployment --application-name platform-admin  --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name staging  --github-location repository=zopnow/platform-admin,commitId=${CIRCLE_SHA1} --region ap-south-1
+      #       fi
+      #       if [ "${CIRCLE_BRANCH}" == “master” ]; then
+      #         aws deploy create-deployment --application-name platform-admin  --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name production  --github-location repository=zopnow/platform-admin,commitId=${CIRCLE_SHA1} --region ap-south-1
+      #       fi
