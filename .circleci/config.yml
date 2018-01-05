@@ -29,8 +29,8 @@ jobs:
           key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
-      # - run: ./vendor/bin/codecept build
-      # - run: ./vendor/bin/codecept run
+      - run: ./vendor/bin/codecept build
+      - run: ./vendor/bin/codecept run
       - run:
           name: End script
           command: echo Script completed
