@@ -10,6 +10,8 @@ jobs:
           name: Running selenium standalone
           command: |
             cd ~/selenium
+            wget https://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
             wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
             xvfb-run java -jar selenium-server-standalone-3.8.1.jar
             sleep 5
