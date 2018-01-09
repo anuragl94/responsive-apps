@@ -3,25 +3,24 @@ version: 2
 jobs:
   build:
     docker:
-      - image: codeception/codeception
+      - image: zopnow/lamp-stack
     working_directory: /var/www/application
     steps:
-      # - run:
-      #     name: Fetching selenium webdriver
-      #     command: |
-      #       mkdir ~/selenium
-      #       cd ~/selenium
-      #       wget https://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip
-      #       unzip chromedriver_linux64.zip
-      #       wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
-      #       apt-get install libxi6 libgconf-2-4 -y
-      # - run:
-      #     name: Running selenium standalone
-      #     command: |
-      #       cd ~/selenium
-      #       xvfb-run java -jar ~/selenium/selenium-server-standalone-3.8.1.jar
-      #       sleep 10
-      #     background: true
+      - run:
+          name: Fetching selenium webdriver
+          command: |
+            cd ~/selenium
+            wget https://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
+            apt-get install libxi6 libgconf-2-4 -y
+      - run:
+          name: Running selenium standalone
+          command: |
+            cd ~/selenium
+            xvfb-run java -jar ~/selenium/selenium-server-standalone-3.8.1.jar
+            sleep 10
+          background: true
       - run: rm -rf /var/www/application
       - checkout
       - run: npm install
