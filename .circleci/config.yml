@@ -41,7 +41,7 @@ jobs:
           name: Deploy Application
           command: |
             if [ "${CIRCLE_BRANCH}" == “master” ]; then
-              firebase deploy
+              firebase deploy --token=$FIREBASE_TOKEN --non-interactive
             fi
       - run:
           name: End script
