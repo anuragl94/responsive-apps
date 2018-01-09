@@ -10,7 +10,7 @@ export default function PageNotFound (props) {
         <a href=''>About</a>
       </nav>
       <main className='width-container'>
-          Here is my social media website design
+          Here is my social media website design. On smaller devices, the navbar shifts to the bottom for better accessibility.
       </main>
     </div>
   )
