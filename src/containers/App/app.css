@@ -20,7 +20,7 @@ noscript {
 
 @media screen and (min-width: 900px) {
   .width-container {
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
   }
 }
