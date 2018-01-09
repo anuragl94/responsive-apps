@@ -7,13 +7,14 @@ jobs:
     working_directory: /var/www/application
     steps:
       - run:
-          name: Fetching selenium webdriver
+          name: Fetching selenium webdriver & dependencies
           command: |
             cd ~/selenium
             wget https://chromedriver.storage.googleapis.com/2.34/chromedriver_linux64.zip
             unzip chromedriver_linux64.zip
             wget http://selenium-release.storage.googleapis.com/3.8/selenium-server-standalone-3.8.1.jar
             apt-get install libxi6 libgconf-2-4 -y
+            apt-get install google-chrome-stable
       - run:
           name: Running selenium standalone
           command: |
