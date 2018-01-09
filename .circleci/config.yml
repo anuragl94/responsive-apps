@@ -17,7 +17,7 @@ jobs:
           name: Running selenium standalone
           command: |
             cd ~/selenium
-            xvfb-run java -jar ~/selenium/selenium-server-standalone-3.8.1.jar
+            xvfb-run java -jar ~/selenium/selenium-server-standalone-3.4.0.jar
             sleep 10
           background: true
       - run: rm -rf /var/www/application
