@@ -30,11 +30,15 @@ jobs:
             - vendor
       # - run: ./vendor/bin/codecept build
       # - run: ./vendor/bin/codecept run
+      - run:
+          name: Installing deployment tools
+          command: |
+            npm install -g firebase-tools
       - deploy:
           name: Deploy Application
           command: |
-            npm install -g firebase-tools
             if [ "${CIRCLE_BRANCH}" == “master” ]; then
+              echo Deploying to production
               firebase deploy --token=$FIREBASE_TOKEN --non-interactive
             fi
       - run:
