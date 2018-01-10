@@ -37,7 +37,7 @@ jobs:
       - deploy:
           name: Deploy Application
           command: |
-            if [ "${CIRCLE_BRANCH}" == “master” ]; then
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
               echo Deploying to production
               firebase deploy --token=$FIREBASE_TOKEN --non-interactive
             fi

@@ -11,6 +11,8 @@ export default function PageNotFound (props) {
       </nav>
       <main className='width-container'>
           Here is my social media website design. On smaller devices, the navbar shifts to the bottom for better accessibility.
+          This approach however has its flaws as this design increases chances of accidentally clicking a menu item because of
+          the resting position of the thumb.
       </main>
     </div>
   )
